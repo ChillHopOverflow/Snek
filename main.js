@@ -1,29 +1,23 @@
 let s
 const scl = 20
-let food
+let noms
 
 function setup() {
     createCanvas(600, 600)
     s = new Snek()
+    noms = new Noms()
+    noms.newRandomNom()
     frameRate(9)
-    pickLocation()
 }
 function draw() {
     background(51)
-    if (s.eat(food)) {
-        pickLocation()
+    if (s.eat(noms)) {
+        noms.newRandomNom()
     }
     s.update()
     s.show()
     s.death()
-    fill(255, 0, 100);
-    rect(food.x, food.y, scl, scl);
-}
-function pickLocation() {
-    let cols = floor(width / scl)
-    let rows = floor(height / scl)
-    food = createVector(floor(random(cols)), floor(random(rows)))
-    food.mult(scl)
+    noms.nom()
 }
 function keyPressed() {
     if (key == 'w' || key == "ArrowUp") {

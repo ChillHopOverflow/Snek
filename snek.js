@@ -32,24 +32,23 @@ class Snek {
         this.x = constrain(this.x, 0, width - scl)
         this.y = constrain(this.y, 0, height - scl)
     }
-    eat = (pos) => {
-        let d = dist(this.x, this.y, pos.x, pos.y);
+    eat = (noms) => {
+        let d = dist(this.x, this.y, noms.x, noms.y);
         if (d < 1) {
             this.total++;
             return true;
         } else {
             return false;
         }
-    };
+    }
     death = () => {
         for (let i = 0; i < this.tail.length; i++) {
           let pos = this.tail[i];
           let d = dist(this.x, this.y, pos.x, pos.y);
           if (d < 1) {
-            console.log('starting over');
             this.total = 0;
             this.tail = [];
           }
         }
-      };
+      }
 }
