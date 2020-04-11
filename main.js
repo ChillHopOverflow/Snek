@@ -3,21 +3,23 @@ const scl = 20
 let noms
 
 function setup() {
-    createCanvas(600, 600)
+    createCanvas(700, 700)
     s = new Snek()
     noms = new Noms()
     noms.newRandomNom()
     frameRate(9)
 }
 function draw() {
-    background(51)
-    if (s.eat(noms)) {
-        noms.newRandomNom()
+    if (menu()) {
+        background(70)
+        if (s.eat(noms)) {
+            noms.newRandomNom()
+        }
+        s.update()
+        s.show()
+        s.death()
+        noms.nom()
     }
-    s.update()
-    s.show()
-    s.death()
-    noms.nom()
 }
 function keyPressed() {
     if (key == 'w' || key == "ArrowUp") {
